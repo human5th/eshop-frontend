@@ -1,0 +1,12 @@
+<article class="sneaker">
+    <div style="display: flex;width: 100%; justify-content: space-between;">
+        <span class="sneaker__price">${{ currentProduct.price }}</span>
+        <span><i class="las la-star" *ngFor="let i of getStars('fill')" ></i> <i class="lar la-star" *ngFor="let i of getStars('empty')" ></i></span>
+    </div>
+    <img src="/assets/img/featured2.png" class="sneaker__img">
+    <span class="snaker__name">{{ currentProduct.name }}</span>
+    <span class="snake__name" style="color: green">{{ currentProduct.description }}</span>
+    <span style="color: yellow">{{ currentProduct.richdescription }}</span>
+
+    <a href="#" class="button-right">Add to Cart <i class="bx bx-right-arrow-alt"></i></a>
+</article>

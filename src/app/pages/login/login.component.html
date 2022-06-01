@@ -1,0 +1,15 @@
+<div class="login">
+    <div class="center">
+        <h1>Login</h1>
+        <form #login="ngForm" (ngSubmit)="onSubmit(login)" class="form" novalidate>
+            <input ngModel class="txtfield" type="email" name="email" placeholder="Email" required/>
+            <input ngModel class="txtfield" type="password" name="password" placeholder="Password" required/>
+            <div class="forgetpass"><a class="link" href="/forgot-password">Forget Password ?</a></div>
+            <button class="btn" type="submit">connect</button>
+            <div class="signup">New Member ? <a class="link" href="/register">Signup</a></div>
+        </form>
+        <p>
+            {{ current }}
+        </p>
+    </div>
+</div>

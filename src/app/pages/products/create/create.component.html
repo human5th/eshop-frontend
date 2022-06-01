@@ -1,0 +1,38 @@
+<div class="login">
+    <div class="right">
+        <h1 style="margin: 0;padding: 0; color:blue; height: 80px; display: flex; justify-content: center; align-items: center">Form product</h1>
+        <p style="margin: 20px;">Please fill the forms below to save a new product</p>
+        <form class="form" #createproduct="ngForm" (ngSubmit)="onSubmit(createproduct)" novalidate>
+            <div class="form-grp">
+                <label for="name">Name:</label>
+                <input required ngModel class="txtfield" type="text" name="name" placeholder="" required/>
+            </div>
+            <div class="form-grp">
+                <label for="stock">Count in stock:</label>
+                <input required ngModel class="txtfield" min="0" max="255" type="number" name="countInStock" placeholder="" required/>
+            </div>
+            <div class="form-grp">
+                <label for="stock">Price:</label>
+                <input required ngModel class="txtfield" type="number" name="price" placeholder="" required/>
+            </div>
+            <div class="form-grp">
+
+                <label for="category">Category:</label>
+                <select required ngModel class="txtfield" name="category" id="category">
+                    <option *ngFor="let c of categories" [ngValue]="c._id">{{ c.name }}</option>
+                </select>
+            </div>
+            <div class="form-grp">
+                <input ngModel type="range" min="0" max="5" name="rating" id="rating"> {{ createproduct.value.rating }}
+                <i class="las la-star"></i>
+            </div>
+            <div class="form-grp">
+                <label for="stock">Uploard an image:</label>
+                <input required ngModel class="txtfield" type="file" name="image" placeholder="" required/>
+                <img src="createproduct.value.image" alt="">
+            </div>
+            <small style="color: red;" *ngIf="createproduct.touched && !createproduct.valid">Fields are required</small>
+            <button *ngIf="checkSubmit(createproduct)" class="btn" type="submit">save</button>
+        </form>
+    </div>
+</div>

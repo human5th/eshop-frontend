@@ -1,0 +1,38 @@
+<div class="register">
+    <div class="center">
+        <p>{{ model | json }}</p>
+        <p>{{ newUser | json }}</p>
+        <h1>Register</h1>
+        <form #register="ngForm" (ngSubmit)="onSubmit(register)" class="form">
+            <input ngModel class="txtfield" type="text" name="name" placeholder="Name" required/>
+            <input ngModel class="txtfield" type="email" name="email" placeholder="Email" required/>
+            <input ngModel class="txtfield" type="password" name="Password" placeholder="Password" required/>
+            <input ngModel class="txtfield" type="tel" name="phone" placeholder="Telephone" required/>
+            <select class="txtfield" name="isAdmin" id="isAdmin">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <input ngModel class="txtfield" type="hidden" name="street" placeholder="Street" required/>
+            <input ngModel class="txtfield" type="hidden" name="apartement" placeholder="Apartement" required/>
+            <input ngModel class="txtfield" type="hidden" name="zip" placeholder="Zip code" required/>
+            <input ngModel class="txtfield" type="hidden" name="city" placeholder="City" required/>
+            <input ngModel class="txtfield" type="hidden" name="country" placeholder="Country" required/>
+
+            <input class="btn" type="submit" value="save" />
+            <div class="signup">Already Member ? <a class="link" href="/login">Connect</a></div>
+        </form>
+    </div>
+
+</div>
+<!-- public name?: String,
+    public email?: String,
+    public password?: String,
+    public phone?: String,
+
+    public isAdmin?: boolean,
+
+    public street?: String,
+    public apartement?: String,
+    public zip?: String,
+    public city?: String,
+    public country?: String, -->
