@@ -1,7 +1,7 @@
 <div class="register">
     <div class="center">
-        <p>{{ model | json }}</p>
-        <p>{{ newUser | json }}</p>
+        <!-- <p>{{ model | json }}</p>
+        <p>{{ newUser | json }}</p> -->
         <h1>Register</h1>
         <form #register="ngForm" (ngSubmit)="onSubmit(register)" class="form">
             <input ngModel class="txtfield" type="text" name="name" placeholder="Name" required/>

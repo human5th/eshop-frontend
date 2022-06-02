@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/user';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
     // console.log(login.value);
     this.model = login.value;
     this.submitted = true;
-    await this._httpClient.post('http://localhost:3000/api/v1/users/login', this.model).toPromise().then(res=>{
+    await this._httpClient.post(`${environment.apiUrl}users/login`, this.model).toPromise().then(res=>{
       this.current = res
     })
 

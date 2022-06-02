@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { zip } from 'rxjs';
 import { ExtendedUser } from 'src/app/extend-user';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   newUser: any;
   model: ExtendedUser;
   submitted: boolean;
+  current: any;
 
   constructor(private _httpClient: HttpClient, private router: Router) { }
 
@@ -43,19 +44,19 @@ export class RegisterComponent implements OnInit {
       "city": this.model.city,
       "country": this.model.country
     }
-    this._httpClient.post('http://localhost:3000/api/v1/users/register', this.newUser).subscribe(data=>{
+    this._httpClient.post(`${environment.apiUrl}users/register`, this.newUser).subscribe(data=>{
       console.log(data)
     })
     this.submitted = true;
-    // this.router.navigateByUrl('/dashboard')
+    this.router.navigateByUrl('/dashboard')
     console.log(this.submitted)
-    // let headers = new HttpHeaders({
-    //   'Content-Type': "application/json",
-    //   'Authorization': `Bearer ${this.current.token}`
-    // })
-    // this._httpClient.get('http://localhost:3000/api/v1/categories', { headers: headers }).subscribe(res=>{
-    //   console.log(res)
-    // })
+    let headers = new HttpHeaders({
+      'Content-Type': "application/json",
+      'Authorization': `Bearer ${this.current.token}`
+    })
+    this._httpClient.get(`${environment.apiUrl}categories`, { headers: headers }).subscribe(res=>{
+      console.log(res)
+    })
   }
   
   ngOnInit(): void {

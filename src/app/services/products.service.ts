@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class ProductsService {
         'Content-Type': "application/json",
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       })
-    return await this._httpClient.post(`http://localhost:3000/api/v1/products/`, value, {headers: headers})
+    return await this._httpClient.post(`${environment.apiUrl}`, value, {headers: headers})
   }
 
   async rmProductById(idprod) {
@@ -21,7 +22,7 @@ export class ProductsService {
         'Content-Type': "application/json",
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       })
-    return await this._httpClient.delete(`http://localhost:3000/api/v1/products/${idprod}`, {headers: headers})
+    return await this._httpClient.delete(`${environment.apiUrl}${idprod}`, {headers: headers})
   }
 
   async getToProductById(idprod) {
@@ -29,11 +30,11 @@ export class ProductsService {
         'Content-Type': "application/json",
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       })
-    return await this._httpClient.get(`http://localhost:3000/api/v1/products/${idprod}`, {headers: headers})
+    return await this._httpClient.get(`${environment.apiUrl}${idprod}`, {headers: headers})
   }
 
   async getProductsCount() {
-    return await this._httpClient.get(`http://localhost:3000/api/v1/products/get/count`)
+    return await this._httpClient.get(`${environment.apiUrl}get/count`)
   }
   
 }

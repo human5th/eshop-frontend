@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ProductsService } from "src/app/services/products.service";
+import { environment } from "src/environments/environment";
 
 @Component({
     selector: 'app-dashboard',
@@ -51,18 +52,18 @@ export class DashboardComponent implements OnInit {
             this.router.navigateByUrl('login')
         }
         
-        await this._httpClient.get('http://localhost:3000/api/v1/products').toPromise().then(res=>{
+        await this._httpClient.get(`${environment.apiUrl}products`).toPromise().then(res=>{
             this.products = res
             
         })
         this.cloneProducts =  this.products
         this.cloneProducts.splice(5, this.cloneProducts.length-1)    
 
-        await this._httpClient.get('http://localhost:3000/api/v1/categories', { headers: headers }).toPromise().then(res=>{
+        await this._httpClient.get(`${environment.apiUrl}categories`, { headers: headers }).toPromise().then(res=>{
           console.log(res)
         })
 
-        await this._httpClient.get('http://localhost:3000/api/v1/users', { headers: headers }).toPromise().then(res=>{
+        await this._httpClient.get(`${environment.apiUrl}users`, { headers: headers }).toPromise().then(res=>{
             console.log(res)
             this.users = res
           })

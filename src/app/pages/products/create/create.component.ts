@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductsService } from 'src/app/services/products.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-create',
@@ -29,13 +30,13 @@ export class CreateComponent implements OnInit {
       console.log('not complete')
       return false
     }
-    /*
+    
     (await this.productService.saveProduct(cp.value)).toPromise().then(res=>{
       console.log(res)
 
     }).catch(err=>console.log(err))
 
-    this.__router.navigateByUrl("/dashboard", { skipLocationChange: false })*/
+    this.__router.navigateByUrl("/dashboard", { skipLocationChange: false })
   }
 
   async ngOnInit() {
@@ -44,7 +45,7 @@ export class CreateComponent implements OnInit {
       'Authorization': `Bearer ${localStorage.getItem('token')}`
     })
     
-    await this._httpClient.get('http://localhost:3000/api/v1/categories', { headers: headers }).toPromise().then(res=>{
+    await this._httpClient.get(`${environment.apiUrl}categories`, { headers: headers }).toPromise().then(res=>{
       this.categories = res
     })
   } 
